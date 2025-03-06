@@ -1,15 +1,14 @@
 
 package frc.robot.Subsystems;
 
-import static frc.robot.Constants.DrivetrainConstants.kCurrentLimit;
+
 import static frc.robot.Constants.DrivetrainConstants.kLeftFrontID;
 import static frc.robot.Constants.DrivetrainConstants.kLeftRearID;
 import static frc.robot.Constants.DrivetrainConstants.kRightFrontID;
 import static frc.robot.Constants.DrivetrainConstants.kRightRearID;
 
 import com.revrobotics.spark.SparkLowLevel.MotorType;
-import com.revrobotics.spark.config.SparkBaseConfig;
-import com.revrobotics.spark.config.SparkMaxConfig;
+
 import com.revrobotics.spark.SparkMax;
 
 

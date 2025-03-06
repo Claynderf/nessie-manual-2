@@ -88,7 +88,9 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     //  m_container.drive();
-    m_container.directDriveElevator();
+   // m_container.directDriveElevator();
+   m_container.directWristDrive();
+   m_container.DirectManipulatorDrive();
   }
 
   /** This function is called once when the robot is disabled. */
