@@ -9,10 +9,10 @@ import frc.robot.Subsystems.*;
 
 
 public final class Autos {
-  private static DrivetrainSubsystem m_drivetrain = new DrivetrainSubsystem();
+
 
   /** Example static factory for an autonomous command. */
-  public static Command AutoCommand() {
+  public static Command AutoCommand(DrivetrainSubsystem m_drivetrain) {
     return new RunCommand(() -> m_drivetrain.driveCartesian(-0.5, 0 , 0), m_drivetrain)
           .withTimeout(1)
           .andThen(new RunCommand(() -> m_drivetrain.driveCartesian(0, 0, 0), m_drivetrain ));

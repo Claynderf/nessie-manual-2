@@ -124,8 +124,13 @@ public class WristSubsystem extends SubsystemBase {
         m_wristMotor.stopMotor();
     }
     public void moveWrist(double speed) {
-        m_wristMotor.set(speed);
-    }
+       
+        if (m_wristMotor.getEncoder().getPosition() > 15 && speed > 0 )
+        {
+         speed = 0;
+        }
+         m_wristMotor.set(speed);
+    } 
     // manual wrist control
     public void setWristSpeed(double speed) {
         // SmartDashboard.putNumber("Wrist Encoder Position", m_wristMotor.getEncoder().getPosition());

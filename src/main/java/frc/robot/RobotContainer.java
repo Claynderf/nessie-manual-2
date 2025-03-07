@@ -16,6 +16,7 @@ import frc.robot.Constants.*;
 import frc.robot.Subsystems.*;
 import frc.robot.Commands.ManipulatorCommand;
 import frc.robot.Commands.StopCommand;
+import frc.robot.Commands.Autos;
 import frc.robot.Commands.HoldCommand;
 
 
@@ -85,7 +86,7 @@ public class RobotContainer {
       return 0;
     }
 
-    var speedReduction = 0.25;
+    var speedReduction = 1;
 
     return axisValue  * axisValue * axisValue * speedReduction;
   }
@@ -134,5 +135,9 @@ else
   {
     m_elevator.dashboardStuff();
     m_wrist.dashboardStuff();
+  }
+
+  public Command getAutonomousCommand() {
+    return Autos.AutoCommand(m_drivetrain);
   }
 }
