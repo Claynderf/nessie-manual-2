@@ -1,16 +1,18 @@
 package frc.robot.Commands;
-
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Subsystems.ManipulatorSubsystem;
 
 public class ManipulatorCommand extends Command{
-    private ManipulatorSubsystem manipulatorSubsystem;
+    private ManipulatorSubsystem m_manipulatorSubsystem;
     private boolean isIntake = false;
+    private CommandXboxController m_driverController;
 
-    public ManipulatorCommand(ManipulatorSubsystem manipulatorSubsystem, boolean isIntake)
+    public ManipulatorCommand(ManipulatorSubsystem manipulatorSubsystem, boolean isIntake, CommandXboxController driverController)
     {
-        this.manipulatorSubsystem = manipulatorSubsystem;
-        this.isIntake = isIntake;
+        m_manipulatorSubsystem = manipulatorSubsystem;
+        isIntake = isIntake;
+        this.m_driverController = driverController;
 
         addRequirements(manipulatorSubsystem);
     }
@@ -18,19 +20,12 @@ public class ManipulatorCommand extends Command{
     @Override
     public void execute()
     {
-        if (isIntake)
-        {
-            manipulatorSubsystem.intake();
-        }
-        else
-        {
-            manipulatorSubsystem.placeGamepiece();
-        }
+       
     }
 
     @Override
     public void end(boolean interrupted)
     {
-        manipulatorSubsystem.stop();
+      
     }
 }

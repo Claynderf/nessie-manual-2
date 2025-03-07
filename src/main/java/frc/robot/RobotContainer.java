@@ -92,8 +92,9 @@ public class RobotContainer {
 
   public void directDriveElevator()
   {
-    m_elevator.moveElevator(ConditionJoystickValue(-m_driverController.getLeftY()));
-
+ if (m_driverController.povDown().getAsBoolean()){
+m_elevator.moveElevator(ConditionJoystickValue(-m_driverController.getRightY()));}
+else {m_elevator.moveElevator(0);}
     // if (m_driverController.getAButton())
     // {
     //   m_elevator.goToPosition(0);
@@ -105,14 +106,30 @@ public class RobotContainer {
   }
   public void directWristDrive()
   {
-    m_wrist.moveWrist(ConditionJoystickValue(-m_driverController.getLeftY()));
+    m_wrist.moveWrist(ConditionJoystickValue(-m_driverController.getLeftTriggerAxis()));
+    m_wrist.moveWrist(ConditionJoystickValue(m_driverController.getRightTriggerAxis()));
   }
   public void DirectManipulatorDrive()
 {
-  // m_driverController.a().whileTrue(m_manipulator.intake(m_driverController.getLeftTriggerAxis()));
-  m_manipulator.intake(m_driverController.getLeftTriggerAxis());
+ //m_manipulator.intake(m_driverController.rightBumper().getAsBoolean()? 0.75:0);
+ //m_manipulator.shoot(m_driverController.leftBumper().getAsBoolean()? -0.75:0);
+if (m_driverController.leftBumper().getAsBoolean())
+{
+  m_manipulator.intake(0.75);
+}
+else if (m_driverController.rightBumper().getAsBoolean())
+{
+  m_manipulator.intake(-0.75);
 
 }
+else 
+{
+  m_manipulator.intake(0);
+}
+ 
+
+}
+
   public void dashboardStuff()
   {
     m_elevator.dashboardStuff();

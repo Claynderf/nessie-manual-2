@@ -5,9 +5,14 @@ import com.revrobotics.spark.SparkBase.PersistMode;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.config.SparkMaxConfig;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.Constants;
+import frc.robot.Constants.OperatorConstants;
+
 
 public class ManipulatorSubsystem extends SubsystemBase{
+      private final CommandXboxController m_driverController =
+      new CommandXboxController(OperatorConstants.kDriverControllerPort);
     private SparkMax m_topMotor; // Leader
     private SparkMax m_middleMotor; // Follower
     private SparkMax m_bottomMotor; // Follower
@@ -70,10 +75,9 @@ public class ManipulatorSubsystem extends SubsystemBase{
     public void stop() {
         m_topMotor.stopMotor();
     }
-    public void intake(double speed) {
+    public void intake(double power) {
     
-        
-        m_topMotor.set(speed);
+        m_topMotor.set(power);
     }
-  
+    
 }
