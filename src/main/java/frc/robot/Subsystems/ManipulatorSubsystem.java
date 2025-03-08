@@ -50,7 +50,7 @@ public class ManipulatorSubsystem extends SubsystemBase{
         m_middleMotor.configure(middleMotorConfig, ResetMode.kResetSafeParameters, PersistMode.kNoPersistParameters);
         m_bottomMotor.configure(bottomMotorConfig, ResetMode.kResetSafeParameters, PersistMode.kNoPersistParameters);
     }
-
+/* 
     // intake ball, spit out pvc pipe
     public void intake() {
         m_topMotor.set(INTAKE_SPEED);
@@ -69,7 +69,7 @@ public class ManipulatorSubsystem extends SubsystemBase{
     // intake pvc pipe, shoot out ball
     public void placeGamepiece() {
         m_topMotor.set(PLACE_SPEED);
-    }
+    }*/
 
     // stop motor
     public void stop() {

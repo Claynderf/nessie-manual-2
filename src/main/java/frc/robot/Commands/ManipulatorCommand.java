@@ -1,4 +1,4 @@
-package frc.robot.Commands;
+/*package frc.robot.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Subsystems.ManipulatorSubsystem;
@@ -28,4 +28,4 @@ public class ManipulatorCommand extends Command{
     {
       
     }
-}
+}*/

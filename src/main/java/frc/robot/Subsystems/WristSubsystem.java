@@ -30,7 +30,7 @@ public class WristSubsystem extends SubsystemBase {
         // config motor
         SparkMaxConfig wristMotorConfig = new SparkMaxConfig();
         wristMotorConfig.inverted(false);
-        wristMotorConfig.idleMode(SparkBaseConfig.IdleMode.kCoast);
+        wristMotorConfig.idleMode(SparkBaseConfig.IdleMode.kBrake);
         m_wristMotor.configure(wristMotorConfig, ResetMode.kResetSafeParameters, PersistMode.kNoPersistParameters);
 
         // Set up PID controller
@@ -52,7 +52,7 @@ public class WristSubsystem extends SubsystemBase {
         // SmartDashboard.putNumber("Wrist pidOutput", 9999);
     }
 
-    /*
+    /* these are the last known relevant values for the wrist positions -PJB
      -0.57 - 19.8 no bumper
      -0.57 - 15.66 with bumper
      */

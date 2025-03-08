@@ -14,10 +14,10 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.Constants.*;
 //import frc.robot.Commands.*;
 import frc.robot.Subsystems.*;
-import frc.robot.Commands.ManipulatorCommand;
+//import frc.robot.Commands.ManipulatorCommand;
 import frc.robot.Commands.StopCommand;
 import frc.robot.Commands.Autos;
-import frc.robot.Commands.HoldCommand;
+//import frc.robot.Commands.HoldCommand;
 
 
 
@@ -90,7 +90,12 @@ public class RobotContainer {
 
     return axisValue  * axisValue * axisValue * speedReduction;
   }
+  public void testdrive()
+  {
 
+    m_drivetrain.driveCartesian(-0.5, 0, 0);
+}
+  
   public void directDriveElevator()
   {
  if (m_driverController.povDown().getAsBoolean()){
@@ -107,8 +112,8 @@ else {m_elevator.moveElevator(0);}
   }
   public void directWristDrive()
   {
-    m_wrist.moveWrist(ConditionJoystickValue(-m_driverController.getLeftTriggerAxis()));
-    m_wrist.moveWrist(ConditionJoystickValue(m_driverController.getRightTriggerAxis()));
+    m_wrist.moveWrist(ConditionJoystickValue(-m_driverController.getLeftTriggerAxis()/3));
+    m_wrist.moveWrist(ConditionJoystickValue(m_driverController.getRightTriggerAxis()/3));
   }
   public void DirectManipulatorDrive()
 {
@@ -116,11 +121,11 @@ else {m_elevator.moveElevator(0);}
  //m_manipulator.shoot(m_driverController.leftBumper().getAsBoolean()? -0.75:0);
 if (m_driverController.leftBumper().getAsBoolean())
 {
-  m_manipulator.intake(0.75);
+  m_manipulator.intake(0.99);
 }
 else if (m_driverController.rightBumper().getAsBoolean())
 {
-  m_manipulator.intake(-0.75);
+  m_manipulator.intake(-0.99);
 
 }
 else 
