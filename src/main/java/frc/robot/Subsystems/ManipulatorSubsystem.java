@@ -23,7 +23,7 @@ public class ManipulatorSubsystem extends SubsystemBase{
 
     public ManipulatorSubsystem() {
         m_topMotor = new SparkMax(Constants.ManipulatorConstants.TOP_MANIPULATOR_MOTOR_ID, MotorType.kBrushless);
-        m_middleMotor = new SparkMax(Constants.ManipulatorConstants.MIDDLE_MANIPULATOR_MOTOR_ID, MotorType.kBrushless);
+      m_middleMotor = new SparkMax(Constants.ManipulatorConstants.MIDDLE_MANIPULATOR_MOTOR_ID, MotorType.kBrushless);
         m_bottomMotor = new SparkMax(Constants.ManipulatorConstants.BOTTOM_MANIPULATOR_MOTOR_ID, MotorType.kBrushless);
 
         //config top motor
@@ -34,8 +34,8 @@ public class ManipulatorSubsystem extends SubsystemBase{
 
         // config middle motor
 
-        SparkMaxConfig middleMotorConfig = new SparkMaxConfig();
-        middleMotorConfig.inverted(false);
+       SparkMaxConfig middleMotorConfig = new SparkMaxConfig();
+        //middleMotorConfig.inverted(false);
         middleMotorConfig.follow(m_topMotor.getDeviceId(), true);
         middleMotorConfig.idleMode(SparkMaxConfig.IdleMode.kBrake);
 
@@ -43,7 +43,7 @@ public class ManipulatorSubsystem extends SubsystemBase{
 
         SparkMaxConfig bottomMotorConfig = new SparkMaxConfig();
         bottomMotorConfig.inverted(false);
-        bottomMotorConfig.follow(m_topMotor.getDeviceId());
+        bottomMotorConfig.follow(m_topMotor);
         bottomMotorConfig.idleMode(SparkMaxConfig.IdleMode.kBrake);
 
         m_topMotor.configure(topMotorConfig, ResetMode.kResetSafeParameters, PersistMode.kNoPersistParameters);

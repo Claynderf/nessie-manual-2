@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Constants;
 
 public class WristSubsystem extends SubsystemBase {
-    private SparkMax m_wristMotor;
+    public SparkMax m_wristMotor;
     private PIDController m_wristPidController;
     private ArmFeedforward m_wristFeedForward;
     private DigitalInput m_limitSwitch;
@@ -124,17 +124,17 @@ public class WristSubsystem extends SubsystemBase {
         m_wristMotor.stopMotor();
     }
     public void moveWrist(double speed) {
-       
-        if (m_wristMotor.getEncoder().getPosition() > 15 && speed > 0 )
-        {
-         speed = 0;
-        }
-         m_wristMotor.set(speed);
+        
+        m_wristMotor.set(speed);
+        
     } 
+    
+    
     // manual wrist control
+    /* 
     public void setWristSpeed(double speed) {
-        // SmartDashboard.putNumber("Wrist Encoder Position", m_wristMotor.getEncoder().getPosition());
-        // SmartDashboard.putNumber("Wrist Speed", speed);
+        SmartDashboard.putNumber("Wrist Encoder Position", m_wristMotor.getEncoder().getPosition());
+        SmartDashboard.putNumber("Wrist Speed", speed);
         
         if (m_limitSwitch.get()) 
         {
@@ -147,27 +147,27 @@ public class WristSubsystem extends SubsystemBase {
 
         if (wristMotor.getEncoder().getPosition() <= Constants.WristConstants.WRIST_LIMIT_TOP) {
             speed = Math.max(speed, 0);
-        }*/
+        }
 
-        // if ((m_limitSwitch.get() && speed > 0)
-        //         || wristMotor.getEncoder().getPosition() > Constants.WristConstants.WRIST_LIMIT_BOTTOM) {
-        //     speed = 0;
-        // }
+        if ((m_limitSwitch.get() && speed > 0)
+                || wristMotor.getEncoder().getPosition() > Constants.WristConstants.WRIST_LIMIT_BOTTOM) {
+            speed = 0;
+        }
 
-        // if ((wristMotor.getEncoder().getPosition() < Constants.WristConstants.WRIST_LIMIT_TOP) && speed > 0) {
-        //     speed = 0;
-        // }
+        if ((wristMotor.getEncoder().getPosition() < Constants.WristConstants.WRIST_LIMIT_TOP) && speed > 0) {
+            speed = 0;
+        }
 
-        // ensure @param speed is within -1 to 1
+        ensure @param speed is within -1 to 1
         speed = (speed > 1) ? 1 : speed;
         speed = (speed < -1) ? -1 : speed;
         if (disableWrist == false){ //safety feature for outreach
             m_wristMotor.set(speed);
         } else {
             m_wristMotor.set(speed);
-        }
+        } 
 
-    }
+    } */
 
   
     public void dashboardStuff()
