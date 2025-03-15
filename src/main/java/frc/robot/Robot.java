@@ -126,9 +126,9 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
-    m_container.drive();
-    //m_container.directDriveElevator();
-     m_container.directWristDrive();
+   m_container.drive();
+    m_container.directDriveElevator();
+    m_container.directWristDrive();
      m_container.DirectManipulatorDrive();
      //m_container.registerTriggers();
   }

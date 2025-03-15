@@ -101,6 +101,15 @@ public class RobotContainer {
 
     return axisValue * axisValue * axisValue * speedReduction;
   }
+  private double ConditionJoystickValueElevator(double axisValue) {
+    if (Math.abs(axisValue) < 0.05) {
+      return 0;
+    }
+
+    var speedReduction = 0.4;
+
+    return axisValue * axisValue * axisValue * speedReduction;
+  }
 
  /*  public void testdrive() {
 
@@ -109,7 +118,7 @@ public class RobotContainer {
 
   public void directDriveElevator() {
     if (m_driverController.povDown().getAsBoolean()) {
-      m_elevator.moveElevator(ConditionJoystickValue(-m_driverController.getRightY()));
+      m_elevator.moveElevator(ConditionJoystickValueElevator(-m_driverController.getRightY()));
     } else {
       m_elevator.moveElevator(0);
     }
@@ -124,16 +133,17 @@ public class RobotContainer {
   // }
 
   public void directWristDrive() {
- 
+ // moving down
     if (m_driverController.getLeftTriggerAxis() > 0.25)  {
       if (m_wrist.m_wristMotor.getEncoder().getPosition() < 25){
        m_wrist.moveWrist(m_driverController.getLeftTriggerAxis() / 5);
       }
         
     }
+    // moving up
     else if (m_driverController.getRightTriggerAxis() > 0.25){
       if (m_wrist.m_wristMotor.getEncoder().getPosition() > 0){
-        m_wrist.moveWrist(-m_driverController.getRightTriggerAxis() / 5);
+        m_wrist.moveWrist(-m_driverController.getRightTriggerAxis() / 3.5);
       }
       
     }
