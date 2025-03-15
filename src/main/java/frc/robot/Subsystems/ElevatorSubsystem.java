@@ -47,7 +47,12 @@ public class ElevatorSubsystem extends SubsystemBase
         leaderConfig.inverted(false);
         leaderConfig.closedLoop
             .feedbackSensor(FeedbackSensor.kAlternateOrExternalEncoder)
-            .pidf(1.0, 0, 0, 0);
+            .pidf(0.05, 0, 0, 16);
+            leaderConfig.softLimit.forwardSoftLimit(1.3)
+            .forwardSoftLimitEnabled(true);
+            leaderConfig.softLimit.reverseSoftLimit(0)
+            .reverseSoftLimitEnabled(true);
+
         AlternateEncoderConfig encoderConfig = new AlternateEncoderConfig();
         encoderConfig.setSparkMaxDataPortConfig();
         encoderConfig.inverted(true);

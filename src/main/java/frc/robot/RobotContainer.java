@@ -118,11 +118,15 @@ public class RobotContainer {
 
   public void directDriveElevator() {
     if (m_driverController.povDown().getAsBoolean()) {
-      m_elevator.moveElevator(ConditionJoystickValueElevator(-m_driverController.getRightY()));
+      m_elevator.moveElevator(ConditionJoystickValueElevator(-m_driverController.getRightY()) + 0.18);
     } else {
-      m_elevator.moveElevator(0);
+      m_elevator.moveElevator(0.18);
     }
     }
+    /*public void buttonElevator() {
+m_driverController.a().whileTrue(m_elevator.
+
+    }*/
   // if (m_driverController.getAButton())
   // {
   // m_elevator.goToPosition(0);
@@ -135,16 +139,18 @@ public class RobotContainer {
   public void directWristDrive() {
  // moving down
     if (m_driverController.getLeftTriggerAxis() > 0.25)  {
-      if (m_wrist.m_wristMotor.getEncoder().getPosition() < 25){
-       m_wrist.moveWrist(m_driverController.getLeftTriggerAxis() / 5);
-      }
+      m_wrist.moveWrist(m_driverController.getLeftTriggerAxis() / 5);
+      //if (m_wrist.m_wristMotor.getEncoder().getPosition() < 25){
+       
+      //}
         
     }
     // moving up
     else if (m_driverController.getRightTriggerAxis() > 0.25){
-      if (m_wrist.m_wristMotor.getEncoder().getPosition() > 0){
-        m_wrist.moveWrist(-m_driverController.getRightTriggerAxis() / 3.5);
-      }
+       m_wrist.moveWrist(-m_driverController.getRightTriggerAxis() / 3.5);
+      //if (m_wrist.m_wristMotor.getEncoder().getPosition() > 0){
+       
+     // }
       
     }
     else {

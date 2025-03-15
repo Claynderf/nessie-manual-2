@@ -31,6 +31,10 @@ public class WristSubsystem extends SubsystemBase {
         SparkMaxConfig wristMotorConfig = new SparkMaxConfig();
         wristMotorConfig.inverted(false);
         wristMotorConfig.idleMode(SparkBaseConfig.IdleMode.kBrake);
+        wristMotorConfig.softLimit.forwardSoftLimit(25)
+        .forwardSoftLimitEnabled(true);
+        wristMotorConfig.softLimit.reverseSoftLimit(0)
+        .reverseSoftLimitEnabled(true);
         m_wristMotor.configure(wristMotorConfig, ResetMode.kResetSafeParameters, PersistMode.kNoPersistParameters);
 
         // Set up PID controller
